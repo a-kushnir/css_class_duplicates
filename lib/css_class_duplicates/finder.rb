@@ -2,12 +2,12 @@
 
 module CssClassDuplicates
   class Finder
-    MATCHER = %r{
-      class\s*\=\s*["']?([\w\s\-_:]+)["']?|          # class = "hello world"
-      class\:\s*["']?([\w\s\-_:]+)["']?|             # class: 'hello world'
+    MATCHER = /
+      class\s*=\s*["']?([\w\s\-_:]+)["']?|          # class = "hello world"
+      class:\s*["']?([\w\s\-_:]+)["']?|             # class: 'hello world'
       ["']?class["']?\s=>\s*["']?([\w\s\-_:]+)["']?  # 'class' => "hello world"
-    }x.freeze
-    WHITESPACE = %r{\s}.freeze
+    /x.freeze
+    WHITESPACE = /\s/.freeze
 
     def self.call(file_name)
       content = File.read(file_name)

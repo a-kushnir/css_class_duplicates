@@ -1,0 +1,3 @@
+files:
+  include:
+    - "**/*.html.erb"

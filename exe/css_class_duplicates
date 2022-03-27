@@ -3,8 +3,8 @@
 
 $LOAD_PATH.unshift("#{__dir__}/../lib")
 
-require 'benchmark'
-require 'css_class_duplicates'
+require "benchmark"
+require "css_class_duplicates"
 
 cli = CssClassDuplicates::CLI.new
 result = 0

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require "English"
+
 module CssClassDuplicates
   class Scanner
-    NEW_LINE = %r{(\r\n|\r|\n)}.freeze
+    NEW_LINE = /(\r\n|\r|\n)/.freeze
 
     def initialize(content)
       @content = content
@@ -10,7 +12,7 @@ module CssClassDuplicates
 
     def scan(regex)
       @content.scan(regex).map do |match|
-        position = $~.offset(0)[0]
+        position = $LAST_MATCH_INFO.offset(0)[0]
         line = file_line(position)
         [match.compact.first, line]
       end

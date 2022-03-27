@@ -13,15 +13,14 @@ module CssClassDuplicates
       entities = []
 
       Dir.glob("**/*.html.erb") do |file_name|
-        entities.concat(Finder.(file_name))
+        entities.concat(Finder.call(file_name))
       end
 
-      entities = Merger.(entities)
-      entities = Filter.(entities)
-      Printer.(entities)
+      entities = Merger.call(entities)
+      entities = Filter.call(entities)
+      Printer.call(entities)
 
       STATUS_SUCCESS
-
     rescue StandardError, SyntaxError, LoadError => e
       warn e.message
       warn e.backtrace
