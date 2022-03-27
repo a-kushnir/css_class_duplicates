@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
   DESCRIPTION
   spec.homepage = "https://github.com/a-kushnir/css_class_duplicates"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.platform = Gem::Platform::RUBY
+  spec.required_ruby_version = ">= 2.5.0"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/a-kushnir/css_class_duplicates"
