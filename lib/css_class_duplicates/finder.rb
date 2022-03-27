@@ -11,13 +11,13 @@ module CssClassDuplicates
 
     def self.call(file_name)
       content = File.read(file_name)
-      matches = content.scan(MATCHER).map(&:compact).flatten
 
-      matches.map do |match|
+      matches = Scanner.new(content).scan(MATCHER)
+      matches.map do |match, line|
         classes = match.split(WHITESPACE).reject(&:empty?)
         next if classes.empty?
 
-        Match.new(classes.map(&:downcase).sort, [file_name])
+        Match.new(classes.map(&:downcase).sort, ["#{file_name}:#{line}"])
       end.compact
     end
   end
