@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 module CssClassDuplicates
-  class Application
-    attr_reader :args
+  class CLI
+    STATUS_SUCCESS = 0
+    STATUS_ERROR = 0
 
-    def initialize(args)
-      @args = args
+    def initialize
+      @options = {}
     end
 
-    def execute
+    def run
       entities = []
 
       Dir.glob("**/*.html.erb") do |file_name|
@@ -19,7 +20,12 @@ module CssClassDuplicates
       entities = Filter.(entities)
       Printer.(entities)
 
-      exit 0
+      STATUS_SUCCESS
+
+    rescue StandardError, SyntaxError, LoadError => e
+      warn e.message
+      warn e.backtrace
+      STATUS_ERROR
     end
   end
 end

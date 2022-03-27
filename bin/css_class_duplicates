@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-# frozen_string_literal: true
-
-require_relative '../lib/css_class_duplicates'
-require_relative '../lib/css_class_duplicates/application'
-
-CssClassDuplicates::Application.new(ARGV).execute

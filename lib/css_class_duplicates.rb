@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'css_class_duplicates/cli'
 require_relative 'css_class_duplicates/filter'
 require_relative 'css_class_duplicates/finder'
 require_relative 'css_class_duplicates/match'
