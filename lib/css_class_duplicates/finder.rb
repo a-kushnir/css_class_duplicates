@@ -3,9 +3,9 @@
 module CssClassDuplicates
   class Finder
     MATCHER = /
-      class\s*=\s*["']?([\w\s\-_:]+)["']?|          # class = "hello world"
+      \s+class\s*=\s*["']?([\w\s\-_:]+)["']?|       # class = "hello world"
       class:\s*["']?([\w\s\-_:]+)["']?|             # class: 'hello world'
-      ["']?class["']?\s=>\s*["']?([\w\s\-_:]+)["']?  # 'class' => "hello world"
+      ["']?class["']?\s=>\s*["']?([\w\s\-_:]+)["']? # 'class' => "hello world"
     /x.freeze
     WHITESPACE = /\s/.freeze
 
