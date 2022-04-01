@@ -12,7 +12,8 @@ module CssClassDuplicates
     def run
       entities = []
 
-      Dir.glob("**/*.html.erb") do |file_name|
+      config = Config.new
+      config.files.each do |file_name|
         entities.concat(Finder.call(file_name))
       end
 
