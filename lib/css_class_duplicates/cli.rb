@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module CssClassDuplicates
+  # The CLI is a class responsible of handling all the command line interface logic.
   class CLI
     STATUS_SUCCESS = 0
     STATUS_ERROR = 0

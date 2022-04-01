@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module CssClassDuplicates
+  # This class searches for CSS classes
   class Finder
     MATCHER = /
       \s+class\s*=\s*["']?([\w\s\-_:]+)["']?|       # class = "hello world"
@@ -12,7 +13,7 @@ module CssClassDuplicates
     def self.call(file_name)
       content = File.read(file_name)
 
-      matches = Scanner.new(content).scan(MATCHER)
+      matches = Scanner.new(content).matches(MATCHER)
       matches.map do |match, line|
         classes = match.split(WHITESPACE).reject(&:empty?)
         next if classes.empty?

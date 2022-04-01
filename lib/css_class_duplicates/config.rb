@@ -4,6 +4,9 @@ require 'yaml'
 require 'rake/file_list'
 
 module CssClassDuplicates
+  # This class represents the configuration of the gem.
+  # A Config is associated with a YAML configuration
+  # file from which it was read.
   class Config
     PROJECT_CONFIG = '.css_class_duplicates.yml'
     DEFAULT_CONFIG = File.expand_path('../../config/default.yml', __dir__)
