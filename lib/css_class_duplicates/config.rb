@@ -13,14 +13,21 @@ module CssClassDuplicates
 
     def initialize
       filename = File.exist?(PROJECT_CONFIG) ? PROJECT_CONFIG : DEFAULT_CONFIG
-      @config = YAML.load_file(filename, symbolize_names: true)
+      @config = YAML.load_file(filename)
     end
 
     def files
-      files = @config[:files]
       Rake::FileList.new.tap do |file_list|
-        file_list.include(files[:include])
-        file_list.exclude(files[:exclude])
+        if (files = @config['files'])
+          if (include = files['include'])
+            file_list.include(include)
+          end
+          if (exclude = files['exclude'])
+            file_list.exclude(exclude)
+          end
+        else
+          file_list.include('**/*')
+        end
       end
     end
   end
