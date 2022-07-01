@@ -36,7 +36,7 @@ module CssClassDuplicates
     end
 
     def merger
-      @merger ||= Merger.new
+      @merger ||= Merger.new(@config['matches'])
     end
 
     def filter

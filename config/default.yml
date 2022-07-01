@@ -1,6 +1,12 @@
 files:
   include:
     - "**/*.html.erb"
+  # exclude:
+  # - "app/views/layouts/**"
+
+matches:
+  type: exact
+  # type: partial
 
 filters:
   classes:
