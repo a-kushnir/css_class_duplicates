@@ -2,7 +2,7 @@
 
 module CssClassDuplicates
   # This class searches for CSS classes
-  class Finder
+  class Parser
     MATCHER = /
       \s+class\s*=\s*["']?([\w\s\-_:]+)["']?|       # class = "hello world"
       class:\s*["']?([\w\s\-_:]+)["']?|             # class: 'hello world'
@@ -10,7 +10,7 @@ module CssClassDuplicates
     /x.freeze
     WHITESPACE = /\s/.freeze
 
-    def self.call(file_name)
+    def call(file_name)
       content = File.read(file_name)
 
       matches = Scanner.new(content).matches(MATCHER)

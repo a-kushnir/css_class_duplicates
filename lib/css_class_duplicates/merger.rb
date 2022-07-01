@@ -3,7 +3,7 @@
 module CssClassDuplicates
   # This class merges found results
   class Merger
-    def self.call(entities)
+    def call(entities)
       entities.group_by(&:classes).map do |classes, items|
         Match.new(classes, items.map(&:files).flatten)
       end

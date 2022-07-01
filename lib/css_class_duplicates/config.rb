@@ -30,5 +30,21 @@ module CssClassDuplicates
         end
       end
     end
+
+    def parser
+      @parser ||= Parser.new
+    end
+
+    def merger
+      @merger ||= Merger.new
+    end
+
+    def filter
+      @filter ||= Filter.new(@config['filters'])
+    end
+
+    def printer
+      @printer ||= Printer.new
+    end
   end
 end

@@ -1,3 +1,9 @@
 files:
   include:
     - "**/*.html.erb"
+
+filters:
+  classes:
+    min: 1
+  matches:
+    min: 1

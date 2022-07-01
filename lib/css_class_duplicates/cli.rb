@@ -15,12 +15,12 @@ module CssClassDuplicates
 
       config = Config.new
       config.files.each do |file_name|
-        entities.concat(Finder.call(file_name))
+        entities.concat(config.parser.call(file_name))
       end
 
-      entities = Merger.call(entities)
-      entities = Filter.call(entities)
-      Printer.call(entities)
+      entities = config.merger.call(entities)
+      entities = config.filter.call(entities)
+      config.printer.call(entities)
 
       STATUS_SUCCESS
     rescue StandardError, SyntaxError, LoadError => e
