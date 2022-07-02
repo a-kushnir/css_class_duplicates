@@ -32,7 +32,7 @@ module CssClassDuplicates
     end
 
     def parser
-      @parser ||= Parser.new
+      @parser ||= Parser.new(@config['filters'])
     end
 
     def merger

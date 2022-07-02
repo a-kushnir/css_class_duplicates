@@ -3,6 +3,7 @@
 require_relative 'css_class_duplicates/cli'
 require_relative 'css_class_duplicates/config'
 require_relative 'css_class_duplicates/filter'
+require_relative 'css_class_duplicates/globber'
 require_relative 'css_class_duplicates/match'
 require_relative 'css_class_duplicates/merger'
 require_relative 'css_class_duplicates/parser'
