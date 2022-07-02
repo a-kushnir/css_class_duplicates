@@ -14,7 +14,7 @@ module CssClassDuplicates
       classes = config.dig('classes')
       @include = to_regex_array(classes&.dig('include'))
       @exclude = to_regex_array(classes&.dig('exclude'))
-      @ignore = to_regex_array(classes&.dig('ignore'))
+      @delete = to_regex_array(classes&.dig('delete'))
     end
 
     def call(file_name)
@@ -35,11 +35,10 @@ module CssClassDuplicates
     private
 
     def filter(classes)
-      classes = classes.reject { |value| include?(@ignore, value) }
       return [] if @include.any? && classes.none? { |value| include?(@include, value) }
-      return [] if @exclude.any? && classes.any? { |value| include?(@exclude, value) }
+      return [] if @exclude.any? && classes.any? { |value| include?(@exclude, value) } || include?(@exclude, classes.join(' '))
 
-      classes
+      classes.reject { |value| include?(@delete, value) }
     end
 
     def include?(list, value)
