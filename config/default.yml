@@ -5,11 +5,18 @@ files:
   # - "app/views/layouts/**"
 
 matches:
-  type: exact
-  # type: partial
+  type: 'exact'
+  # type: 'partial'
 
 filters:
   classes:
-    min: 1
+    min: 2
+    # include:
+    #  - '*'               # Include the match only if it contains the class
+    # exclude:
+    #  - 'first:*'         # Exclude the match if it contains the class
+    #  - 'btn btn-primary' # Exclude the match if it contains the classes
+    # delete:
+    #  - 'hidden'          # Deletes the class from match
   matches:
-    min: 1
+    min: 2
