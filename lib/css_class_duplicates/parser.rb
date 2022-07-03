@@ -35,14 +35,18 @@ module CssClassDuplicates
     private
 
     def filter(classes)
-      return [] if @include.any? && classes.none? { |value| include?(@include, value) }
-      return [] if @exclude.any? && classes.any? { |value| include?(@exclude, value) } || include?(@exclude, classes.join(' '))
+      return [] if @include.any? && !any?(@include, classes)
+      return [] if @exclude.any? && any?(@exclude, classes)
 
       classes.reject { |value| include?(@delete, value) }
     end
 
+    def any?(list, values)
+      values.any? { |value| include?(list, value) } || include?(list, values.join(' '))
+    end
+
     def include?(list, value)
-      list.detect { |regex| value =~ regex }
+      list.any? { |regex| value =~ regex }
     end
 
     def to_regex_array(array)
